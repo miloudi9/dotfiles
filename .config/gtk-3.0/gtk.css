@@ -1,0 +1,8 @@
+/* thunar: dark frame (menubar, sidebar, status bar) around the lighter file view */
+.thunar statusbar,
+.thunar .sidebar,
+.thunar .sidebar .view,
+.thunar .sidebar viewport,
+.thunar .sidebar scrolledwindow {
+    background-color: #1a1b26;
+}

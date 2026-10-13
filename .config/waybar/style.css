@@ -1,0 +1,123 @@
+/* Colors (tokyo night) */
+@define-color foreground	#c0caf5;
+@define-color background	rgba(26, 27, 38, 0.88); /* bg */
+@define-color background-solid	#1a1b26;
+@define-color gray	#292e42; /* bg_highlight */
+@define-color dim	#565f89; /* comment */
+@define-color black	#16161e;
+@define-color red	#f7768e;
+@define-color green	#9ece6a;
+@define-color yellow	#e0af68;
+@define-color blue	#7aa2f7;
+@define-color brred	#ff9e64; /* orange */
+
+@define-color accent	@blue;
+@define-color critical	@red;
+@define-color warning	@yellow;
+
+@keyframes blink {
+    to {
+        background-color: @critical;
+        color: @black;
+    }
+}
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @background;
+    border-bottom: 1px solid @gray;
+    color: @foreground;
+}
+
+/* ---------- workspaces ---------- */
+
+#workspaces button {
+    background: transparent;
+    color: @dim;
+    padding: 0 8px;
+    min-width: 16px;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+    color: @foreground;
+    font-weight: 600;
+    border-bottom-color: @accent;
+}
+
+#workspaces button.urgent {
+    color: @brred;
+    border-bottom-color: @brred;
+}
+
+#workspaces button:hover {
+    background: @gray;
+    color: @foreground;
+}
+
+/* ---------- tooltip ---------- */
+
+tooltip {
+    background: @background-solid;
+    border: 1px solid @accent;
+}
+
+tooltip label {
+    color: @foreground;
+}
+
+/* ---------- modules ---------- */
+
+#tray,
+#language,
+#clock,
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#backlight {
+    background: transparent;
+    color: @foreground;
+    padding: 0 8px;
+}
+
+#tray {
+    margin-left: 8px;
+}
+
+#clock {
+    font-weight: 600;
+}
+
+/* muted / inactive states */
+#pulseaudio:not(.microphone).muted,
+#pulseaudio.microphone.source-muted {
+    color: @dim;
+}
+
+/* battery states */
+#battery.charging,
+#battery.plugged {
+    color: @green;
+}
+
+#battery.warning:not(.charging) {
+    color: @warning;
+}
+
+#battery.critical:not(.charging) {
+    color: @critical;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(2);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

@@ -1,0 +1,7 @@
+[mgr]
+linemode = "size"
+
+[plugin]
+prepend_fetchers = [
+	{ url = "local://*/", run = "dir-size", prio = "low", group = "dir-size" },
+]

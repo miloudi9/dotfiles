@@ -1,0 +1,107 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "reload_style_on_change": true,
+  "height": 24,
+  "modules-left": ["hyprland/workspaces", "tray"],
+
+  "modules-center": ["clock"],
+
+  "modules-right": ["hyprland/language", "battery", "pulseaudio", "pulseaudio#microphone", "backlight", "cpu", "memory"],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "show-special": true,
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4],
+    },
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
+  },
+
+  "cpu": {
+    "interval": 1,
+    "max-length": 10,
+    "format": "<span color='#7aa2f7' rise='1536'></span> {usage:2}%",
+    "tooltip-format": "Usage: {usage}%\nLoad avg: {load}",
+  },
+
+  "memory": {
+    "interval": 1,
+    "format": "<span color='#7aa2f7' rise='1536'></span> {used:0.1f}GB",
+    "max-length": 10,
+  },
+
+  "battery": {
+    "format-charging": "<span rise='1536'>󰂄</span> {capacity}%",
+    "format-plugged": "<span rise='1536'></span> {capacity}%",
+    "format": "<span color='#7aa2f7' rise='1536'>{icon}</span> {capacity:2}%",
+    "format-warning": "<span rise='1536'>{icon}</span> {capacity:2}%",
+    "format-critical": "<span rise='1536'>{icon}</span> {capacity:2}%",
+    "interval": 60,
+    "states": {
+      "warning": 20,
+      "critical": 10,
+    },
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+  },
+
+  "pulseaudio": {
+    "format": "<span color='#7aa2f7' rise='1536'>{icon}</span> {volume:2}%",
+    "format-muted": "<span rise='1536'>󰝟</span> {volume:2}%",
+    "tooltip": false,
+    "disable-scroll": true,
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "<span color='#7aa2f7' rise='1536'>󰍬</span>",
+    "format-source-muted": "<span rise='1536'>󰍭</span>",
+    "tooltip": false,
+    "disable-scroll": true,
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<span color='#7aa2f7' rise='1536'>{icon}</span> {percent:2}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "disable-scroll": true,
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+  },
+
+  "hyprland/language": {
+    "format": "<span color='#7aa2f7' rise='1536'>󰌌</span> {}",
+    "format-en": "EN",
+    "format-ar": "AR",
+    "format-fr": "FR",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+  },
+
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%H:%M <span color='#565f89'>·</span> %a %d %b}",
+  },
+}
